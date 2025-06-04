@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlayWin</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlayWin | Premium Casino</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="PlayWin Logo" style="height:40px;">
+  <header class="navbar">
+    <img src="images/logo.png" alt="PlayWin Logo" class="logo"/>
     <nav>
       <a href="index.html">Home</a>
-      <a href="teenpatti.html">Teen Patti</a>
-      <a href="crash.html">Crash</a>
-      <a href="roulette.html">Roulette</a>
-      <a href="dragontiger.html">Dragon Tiger</a>
+      <a href="pages/teenpatti.html">Teen Patti</a>
+      <a href="pages/crash.html">Crash</a>
+      <a href="pages/roulette.html">Roulette</a>
+      <a href="pages/dragontiger.html">Dragon Tiger</a>
     </nav>
-    <div class="login-form">
-      <h4>Login to PlayWin</h4>
-      <input type="text" placeholder="Email">
+    <div class="auth">
+      <input type="email" placeholder="Email">
       <input type="password" placeholder="Password">
       <button>Login</button>
-      <p><a href="#">Register Now</a></p>
+      <a href="#" class="register-link">Register Now</a>
     </div>
   </header>
 
-  <section class="games">
-    <div class="game-card">
-      <img src="teenpatti.png" alt="Teen Patti">
-      <p>Teen Patti</p>
+  <main class="main-section">
+    <h2>Popular Games</h2>
+    <div class="game-grid">
+      <div class="game-card">
+        <img src="images/teenpatti.png" alt="Teen Patti" />
+        <p>Teen Patti</p>
+      </div>
+      <div class="game-card">
+        <img src="images/crash.png" alt="Crash" />
+        <p>Crash</p>
+      </div>
+      <div class="game-card">
+        <img src="images/roulette.png" alt="Roulette" />
+        <p>Roulette</p>
+      </div>
+      <div class="game-card">
+        <img src="images/dragontiger.png" alt="Dragon Tiger" />
+        <p>Dragon Tiger</p>
+      </div>
     </div>
-    <div class="game-card">
-      <img src="crash.png" alt="Crash">
-      <p>Crash</p>
-    </div>
-    <div class="game-card">
-      <img src="roulette.png" alt="Roulette">
-      <p>Roulette</p>
-    </div>
-    <div class="game-card">
-      <img src="dragontiger.png" alt="Dragon Tiger">
-      <p>Dragon Tiger</p>
-    </div>
-  </section>
+  </main>
 </body>
 </html>
