@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PlayWin Crash - Animated Preview</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0c0c0c;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+      border: 2px solid #333;
+      background-color: #121212;
+    }
+    #controls {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00cc99;
+    }
+    #status {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 PlayWin Crash (Animated Visual Preview)</h1>
+  <canvas id="crashCanvas" width="800" height="400"></canvas>
+  <div id="controls">
+    <button onclick="cashOut()">💸 Cash Out</button>
+    <div id="status">Multiplier: <span id="multiplier">x1.00</span></div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("crashCanvas");
+    const ctx = canvas.getContext("2d");
+    let x = 0, y = canvas.height / 2, crashed = false;
+    let multiplier = 1.0;
+    const multiplierSpan = document.getElementById("multiplier");
+
+    function draw() {
+      if (crashed) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height);
+      for (let i = 0; i <= x; i += 1) {
+        let progress = i / 100;
+        let curve = canvas.height - Math.pow(progress, 1.5) * canvas.height;
+        ctx.lineTo(i * 8, curve);
+      }
+      ctx.strokeStyle = "#00ffcc";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      multiplier += 0.03 + Math.random() * 0.05;
+      multiplier = Math.round(multiplier * 100) / 100;
+      multiplierSpan.textContent = "x" + multiplier;
+      x += 1;
+
+      if (Math.random() < 0.003 * multiplier) {
+        crash();
+      } else {
+        requestAnimationFrame(draw);
+      }
+    }
+
+    function crash() {
+      crashed = true;
+      multiplierSpan.textContent = "💥 CRASHED at x" + multiplier;
+      multiplierSpan.style.color = "red";
+    }
+
+    function cashOut() {
+      if (!crashed) {
+        alert("Cashed out at x" + multiplier);
+        crash();
+      } else {
+        alert("Too late! Already crashed.");
+      }
+    }
+
+    draw();
+  </script>
+</body>
+</html>
